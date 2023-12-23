@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types";
+import Modal from "@/app/components/Modal";
 import PriceInfoCard from "@/app/components/PriceInfoCard";
 import ProductCard from "@/app/components/ProductCard";
 type Props = {
@@ -15,8 +16,8 @@ const page = async ({ params: { id } }: Props) => {
   if (!product) redirect("/");
   console.log(product);
   return (
-    <div className="product-container">
-      <div>
+    <div className="product-container flex">
+      <div className="flex">
         <div>
           <Image
             src={product.image}
@@ -162,6 +163,7 @@ const page = async ({ params: { id } }: Props) => {
           Buy Now
         </Link>
       </button>
+      <Modal />
 
       {similiarProducts && similiarProducts?.length > 0 && (
         <div className="py-14 flex flex-col gap-2 w-full">
